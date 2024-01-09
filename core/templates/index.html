@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+    <title>Django 1 - Home</title>
+</head>
+<body>
+    <center>
+        <h1>Index</h1>
+
+        <img src="{% static 'images/djangosemfundo.png' %}">
+
+        <table>
+            <thead>
+                <tr>
+                    <Th>Produto</Th>
+                    <Th>Preço</Th>
+                    <Th>Estoque</Th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for produto in produtos %}
+                    <tr>
+                        <td><a href = "{% url 'produto' produto.id %}"> {{ produto.nome }} </a></td>
+                        <td>{{ produto.preco }}</td>
+                        <td>{{ produto.estoque }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <button onclick="teste();">Clique aqui!</button>
+        <script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+    </center>
+</body>
+</html>
